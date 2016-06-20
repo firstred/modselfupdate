@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>modselfupdate</name>
+	<displayName><![CDATA[Self updating module]]></displayName>
+	<version><![CDATA[1.0.0]]></version>
+	<description><![CDATA[Uses GitHub in order to update automatically]]></description>
+	<author><![CDATA[Michael Dekker]]></author>
+	<tab><![CDATA[administration]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+</module>

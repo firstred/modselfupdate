@@ -1,49 +1,44 @@
-# Stripe BETA
-![Stripe](/views/img/stripebtnlogo.png)
-
-Accept Payments with Stripe in PrestaShop with this free and open source module.
+# Self updater
+Automatically update your PrestaShop module by using GitHub's API
 
 ## Features
 ### Mission
-The aim of this module is to obsolete all existing available modules for Stripe through its simplicity, security and speed.  
-Contributions are more than welcome!
+Provide a framework that allows a module to self-update with GitHub's API
 
 ### Current features
-- Process Credit Card, Alipay and Bitcoin (USD only) payments with Stripe
-- Process refunds received by webhooks:
-    - Partial refund
-    - Full refund
-    - Generate credit slip
-- Refund from Back Office Order page
-    - Partial refund
-    - Full refund
-- View transactions on Back Office Order Page
-- View all transactions on the module configuration page
-- Uses Stripe's Checkout form to stay up to date with the latest version
-- Supports the Advanced checkout page of the Advanced EU Compliance module
-- Supports the new `paymentOptions` hook of PrestaShop 1.7
-- Supports the One Page Checkout module of PresTeamShop
+- Find latest release
+- Update to latest release
+    - Includes automatic updates
+- Set GitHub authentication for higher rate limit  
 
 ### Roadmap
 The issue page will give you a good overview of the current roadmap and priorities:
-https://github.com/firstred/mdstripe/issues
+https://github.com/firstred/modselfupdate/issues
 
 ## Installation
+### Source
+- Clone the source code: `git clone https://github.com/firstred/modselfupdate modselfupdate`
+- Change directory: `cd modselfupdate`
+- Install composer requirements: `composer install`
+- Install node modules: `npm install`
+- Grunt the module file: `grunt`
+
 ### Module installation
 - Upload the module through FTP or your Back Office
 - Install the module
 - Check if there are any errors and correct them if necessary
 - Profit!
 
-## Documentation
-The wiki is coming soon
-
 ## Compatibility
-This module has been tested with these versions:  
-- `1.6.1.5`
+This module has been tested with this version:  
+- `1.6.1.6`
+
+## Usage
+Tag your releases on GitHub with the version number (e.g. `1.2.0`). This framework will find the latest release and compare it with the currently installed version of the module.  
+The first uploaded release zip will be downloaded and used to update the module.
 
 ## Requirements
-- TLSv1.2 enabled cURL extension for PHP
+- PHP > 5.3.3
 
 ## License
-Academic Free License 3.0
+Do What The Fuck You Want To Public License 2.0
