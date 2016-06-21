@@ -393,7 +393,7 @@ class ModSelfUpdate extends Module
                 $this->extractArchive($zipLocation);
             } else {
                 // We have an outdated URL, reset last check
-                Configuration::updateGlobalValue(self::LAST_CHECK, (int) time() - self::CHECK_INTERVAL);
+                Configuration::updateGlobalValue(self::LAST_CHECK, 0);
             }
         }
     }
@@ -510,7 +510,9 @@ class ModSelfUpdate extends Module
         }
 
         if (!$success) {
-            $this->addError($this->l('There was an error while extracting the module (file may be corrupted).'));
+            $this->addError($this->l('There was an error while extracting the update (file may be corrupted).'));
+            // Force a new check
+            Configuration::updateGlobalValue(self::LAST_CHECK, 0);
         } else {
             //check if it's a real module
             foreach ($zipFolders as $folder) {
