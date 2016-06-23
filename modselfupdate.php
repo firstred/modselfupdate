@@ -66,7 +66,7 @@ class ModSelfUpdate extends Module
         $this->description = $this->l('Uses GitHub in order to update automatically');
 
         // Only check from Back Office
-        if (defined('_PS_ADMIN_DIR_')) {
+        if ($this->context->cookie->id_employee) {
             $this->baseUrl = $this->context->link->getAdminLink('AdminModules', true).'&'.http_build_query(array(
                     'configure' => $this->name,
                     'tab_module' => $this->tab,
