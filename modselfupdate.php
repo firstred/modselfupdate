@@ -65,15 +65,17 @@ class ModSelfUpdate extends Module
         $this->displayName = $this->l('Self updating module');
         $this->description = $this->l('Uses GitHub in order to update automatically');
 
-        $this->baseUrl = $this->context->link->getAdminLink('AdminModules', true).'&'.http_build_query(array(
-                'configure' => $this->name,
-                'tab_module' => $this->tab,
-                'module_name' => $this->name,
-            ));
+        // Only check from Back Office
+        if (defined('_PS_ADMIN_DIR_')) {
+            $this->baseUrl = $this->context->link->getAdminLink('AdminModules', true).'&'.http_build_query(array(
+                    'configure' => $this->name,
+                    'tab_module' => $this->tab,
+                    'module_name' => $this->name,
+                ));
 
-        $this->lastCheck = Configuration::get(self::LAST_CHECK);
-
-        $this->checkUpdate();
+            $this->lastCheck = Configuration::get(self::LAST_CHECK);
+            $this->checkUpdate();
+        }
     }
 
     /**
@@ -146,6 +148,7 @@ class ModSelfUpdate extends Module
     public function getContent()
     {
         $output = '';
+
         $output .= $this->postProcess();
 
         $this->context->smarty->assign(array(
